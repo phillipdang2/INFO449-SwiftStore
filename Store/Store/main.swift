@@ -52,6 +52,8 @@ class Receipt {
         }
         return total
     }
+    
+    
 }
 
 class Register {
@@ -82,3 +84,41 @@ class Store {
     }
 }
 
+// extra credit
+class weighedItem {
+    var item: Item
+    var pounds: Double
+    
+    init(item: Item, pounds: Double) {
+        self.item = item
+        self.pounds = pounds
+    }
+    
+    func weigh() -> Item {
+        return Item(name: self.item.name, priceEach: Int(self.pounds * Double(self.item.priceEach)))
+    }
+}
+
+// extra credit
+class Coupon {
+    var receipt: Receipt
+    
+    init(receiptInput: Receipt) {
+        self.receipt = receiptInput
+    }
+    
+    func discount(name: String) -> Receipt {
+        for item in self.receipt.itemList {
+            if (item.name == name) {
+                item.priceEach = Int(Double(item.priceEach) * 0.85)
+                break
+            }
+        }
+        return receipt
+    }
+}
+
+// extra credit
+class RainCheck {
+    
+}
